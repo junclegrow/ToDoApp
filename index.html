@@ -1,17 +1,39 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title> ToDo App</title>
-    </head>
-    <body>
-        <input type="text" id="input">
-        <button onClick="add()">Add</button>
-        <p id="output">i have no idea</p>
         <script>
+            document.body.onload = addElement;
+
             function add() {
-                const input = document.getElementById("input");
-                var output = document.getElementById("output");
-                alert(input.value);
+                // create a new div element
+                const newDiv = document.createElement("div");
+
+                var text = document.getElementById("input");
+
+                // and give it some content
+                const newContent = document.createTextNode(text.value);
+
+                text.value = "";
+
+                // add the text node to the newly created div
+                newDiv.appendChild(newContent);
+
+                // add the newly created element and its content into the DOM
+                const currentDiv = document.getElementById("list");
+                document.body.insertBefore(newDiv, currentDiv);
             }
         </script>
+    </head>
+    <body>
+
+        <h2>Demo JavaScript in Head</h2>
+
+        <input type="text" id="input"></input>
+
+        <button type="button" onclick="add()">Try it</button>
+
+        <div id="list"></div>
+
     </body>
-</html>
+</html> 
+
